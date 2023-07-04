@@ -8,8 +8,17 @@ import multiprocessing as mp
 def display_stats(donations):
     amounts = [donation["amount"] for donation in donations]
     std_deviation = statistics.stdev(amounts)
+    mean = statistics.mean(amounts)
+    median = statistics.median(amounts)
+    print("--------------------------")
     print("Length :", len(donations))
+    print("Mean :", mean)
+    print("Median :", median)
     print("Standart Deviation :", std_deviation)
+
+    t = time.localtime()
+    current_time = time.strftime("Current time: %H:%M:%S", t)
+    print(current_time)
     time.sleep(5)
 
 def get_all_donations(limit, offset, offset_limit, filename = ""):
